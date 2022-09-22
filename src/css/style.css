@@ -1,0 +1,103 @@
+.root {
+    width: 850px;
+    margin: auto;  
+    font-family: sans-serif;  
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudo {
+    width: 800px;
+    margin-top: 30px;
+    display: flex;
+    align-items: top;
+    justify-content: space-between;      
+}
+
+.conteudo img {
+    height: 450px;
+    width: auto;
+}
+
+.conteudo button {
+    width: 230px;
+    height: 50px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color:#3CB371;
+    color: white;
+    font-size: 20px;
+}
+
+.box-alfabeto {
+    width: 650px;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.box-alfabeto button {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color:#A9A9A9;
+    color: #4F4F4F;
+    font-size: 20px;   
+}
+
+.chutar-palavra {
+    margin: 20px;
+    width: 500px;
+    font-size: 20px;
+    color: #4F4F4F;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chutar-palavra input {
+    height: 32px;
+}
+
+.chutar-palavra button {
+    height: 40px;
+    width: 80px;
+    border-radius: 5px;
+    background-color: #87CEEB;
+    color: #1E90FF;
+    font-size: 18px;
+}
+
+
+@media (max-width: 614px) {
+.root {
+    width: 100%;
+}
+
+.conteudo {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.conteudo img {
+    height: auto;
+    width: 80%;
+    margin: auto;
+}
+
+.box-alfabeto {
+    width: 90%;
+}
+
+.chutar-palavra {
+    flex-direction: column;
+    height: 130px;
+    justify-content: space-between;
+}
+}
