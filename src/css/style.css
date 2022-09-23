@@ -1,8 +1,7 @@
 .root {
     width: 850px;
     margin: auto;  
-    font-family: sans-serif;  
-
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +20,14 @@
     width: auto;
 }
 
-.conteudo button {
+.inicio-jogo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.inicio-jogo button {
     width: 230px;
     height: 50px;
     margin-top: 30px;
@@ -29,6 +35,10 @@
     background-color:#3CB371;
     color: white;
     font-size: 20px;
+}
+
+.palavra {
+    font-size: 30px;
 }
 
 .box-alfabeto {
@@ -40,7 +50,7 @@
     flex-wrap: wrap;
 }
 
-.box-alfabeto button {
+.box-alfabeto button:disabled {
     width: 40px;
     height: 40px;
     margin: 5px;
@@ -48,6 +58,18 @@
     background-color:#A9A9A9;
     color: #4F4F4F;
     font-size: 20px;   
+    border: 1px solid #4F4F4F;
+}
+
+.box-alfabeto button {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #87CEEB;
+    color: #1E90FF;
+    font-size: 20px;   
+    border: 1px solid #1E90FF;
 }
 
 .chutar-palavra {
@@ -71,6 +93,7 @@
     background-color: #87CEEB;
     color: #1E90FF;
     font-size: 18px;
+    border: 1px solid #1E90FF;
 }
 
 
@@ -91,11 +114,16 @@
     margin: auto;
 }
 
+.palavra {
+    margin-top: 35px;
+}
+
 .box-alfabeto {
     width: 90%;
 }
 
 .chutar-palavra {
+    width: 100%;
     flex-direction: column;
     height: 130px;
     justify-content: space-between;
