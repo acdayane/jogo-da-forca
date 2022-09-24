@@ -41,6 +41,14 @@
     font-size: 30px;
 }
 
+.verde {
+    color: green;
+}
+
+.vermelho {
+    color: red;
+}
+
 .box-alfabeto {
     width: 650px;
     margin-top: 30px;
@@ -50,26 +58,26 @@
     flex-wrap: wrap;
 }
 
-.box-alfabeto button:disabled {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color:#A9A9A9;
-    color: #4F4F4F;
-    font-size: 20px;   
-    border: 1px solid #4F4F4F;
-}
-
 .box-alfabeto button {
     width: 40px;
     height: 40px;
     margin: 5px;
     border-radius: 5px;
+    font-size: 20px; 
     background-color: #87CEEB;
-    color: #1E90FF;
-    font-size: 20px;   
+    color: #1E90FF;      
     border: 1px solid #1E90FF;
+}
+
+.box-alfabeto button:disabled {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 20px; 
+    background-color:#A9A9A9;
+    color: #4F4F4F;
+    border: 1px solid #4F4F4F;
 }
 
 .chutar-palavra {
@@ -96,6 +104,11 @@
     border: 1px solid #1E90FF;
 }
 
+.chutar-palavra button:disabled {
+    background-color:#A9A9A9;
+    color: #4F4F4F;
+    border: 1px solid #4F4F4F;
+}
 
 @media (max-width: 614px) {
 .root {
