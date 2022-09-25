@@ -16,9 +16,7 @@ import palavras from "./palavras.js";
 const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
 const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 let arrPalavra = []
-let arrUnderline = []
 let arrLetrasChutadas = []
-let arrPalavraAjustado = []
 let palavra = ""
 let palavraAjustada = ""
 let inputAjustado = ""
@@ -36,23 +34,25 @@ export default function App() {
     function iniciarJogo() {
 
         contaErros = 0
-        arrUnderline = []
-        arrLetrasChutadas = [' _ ']
+        arrLetrasChutadas = []
         setForca(imagens[contaErros])
         setInput("")
 
         const sorteada = Math.floor(Math.random() * palavras.length)
         palavra = (palavras[sorteada]).toUpperCase()
         arrPalavra = palavra.split('')
+        
         console.log(arrPalavra)
 
         for (let i = 0; i < arrPalavra.length; i++) {
-            arrUnderline.push(' _ ')
+            arrLetrasChutadas.push(' _ ')
         }
 
-        setPalavraNaTela(arrUnderline)
+        setPalavraNaTela(arrLetrasChutadas)
 
         habilitarBotao()
+
+        ajustarLetras()
     }
 
     //habilitar e desabilitar botões
@@ -67,47 +67,43 @@ export default function App() {
         setDisable(true)
     }
 
-    //ignorar acentos e caracteres especiais da letra clicada na comparação com a palavra sorteada
+    //ignorar acentos e caracteres especiais da palavra sorteada
 
-    function ajustarLetra (letra, i) {
+    function ajustarLetras() {
 
-            arrPalavraAjustado = arrPalavra
-
-            for (let j = 0; j < arrPalavra.length; j++) {
-                if (arrPalavra[j] === 'Á' || arrPalavra[j] === 'À' || arrPalavra[j] === 'Â' || arrPalavra[j] === 'Ã') {
-                    arrPalavraAjustado[j] = 'A'
-                }
-                if (arrPalavra[j] === 'É' || arrPalavra[j] === 'Ê') {
-                    arrPalavraAjustado[j] = 'E'
-                }
-                if (arrPalavra[j] === 'Í') {
-                    arrPalavraAjustado[j] = 'I'
-                }
-                if (arrPalavra[j] === 'Ó' || arrPalavra[j] === 'Ô') {
-                    arrPalavraAjustado[j] = 'A'
-                }
-                if (arrPalavra[j] === 'Ú') {
-                    arrPalavraAjustado[j] = 'U'
-                }
-                if (arrPalavra[j] === 'Ç') {
-                    arrPalavraAjustado[j] = 'C'
-                }
+        for (let j = 0; j < arrPalavra.length; j++) {
+            if (arrPalavra[j] === 'Á' || arrPalavra[j] === 'À' || arrPalavra[j] === 'Â' || arrPalavra[j] === 'Ã') {
+                arrPalavra[j] = 'A'
             }
-        
-        escolherLetra(letra, i)
+            if (arrPalavra[j] === 'É' || arrPalavra[j] === 'Ê') {
+                arrPalavra[j] = 'E'
+            }
+            if (arrPalavra[j] === 'Í') {
+                arrPalavra[j] = 'I'
+            }
+            if (arrPalavra[j] === 'Ó' || arrPalavra[j] === 'Ô'|| arrPalavra[j] === 'Õ') {
+                arrPalavra[j] = 'O'
+            }
+            if (arrPalavra[j] === 'Ú') {
+                arrPalavra[j] = 'U'
+            }
+            if (arrPalavra[j] === 'Ç') {
+                arrPalavra[j] = 'C'
+            }
+        }
     }
 
     //clicar em cada letra, renderizar acertos e erros, chamar funções de finalizar jogo
 
     function escolherLetra(letra, i) {
 
-        if (arrPalavraAjustado.includes(letra.toUpperCase())) {
+        if (arrPalavra.includes(letra.toUpperCase())) {
 
-            for (let j = 0; j < arrPalavraAjustado.length; j++) {
+            for (let j = 0; j < arrPalavra.length; j++) {
 
-                if (letra.toUpperCase() === arrPalavraAjustado[j]) {
-                    arrUnderline[j] = letra.toUpperCase()
-                    arrLetrasChutadas = [...arrUnderline]
+                if (letra.toUpperCase() === arrPalavra[j]) {
+                    arrLetrasChutadas[j] = letra.toUpperCase()
+                    arrLetrasChutadas = [...arrLetrasChutadas]
                     setPalavraNaTela(arrLetrasChutadas)
 
                     if (arrLetrasChutadas.includes(' _ ') === false) {
@@ -129,25 +125,19 @@ export default function App() {
         }
     }
 
-    //ignorar acentos e caracteres especiais do input na comparação com a palavra sorteada
+    //ignorar acentos e caracteres especiais do input e finalizar jogo
 
     const [input, setInput] = useState("")
 
     function chutar() {
 
-        palavraAjustada = palavra.replace('Á', 'A')
-        palavraAjustada = palavraAjustada.replace('À', 'A')
-        palavraAjustada = palavraAjustada.replace('Ã', 'A')
-        palavraAjustada = palavraAjustada.replace('Â', 'A')
-        palavraAjustada = palavraAjustada.replace('É', 'E')
-        palavraAjustada = palavraAjustada.replace('Ê', 'E')
-        palavraAjustada = palavraAjustada.replace('Í', 'I')
-        palavraAjustada = palavraAjustada.replace('Ó', 'O')
-        palavraAjustada = palavraAjustada.replace('Ô', 'O')
-        palavraAjustada = palavraAjustada.replace('Ú', 'U')
-        palavraAjustada = palavraAjustada.replace('Ç', 'C')
+        palavraAjustada = arrPalavra.toString()
+        for (let j = 0; j < arrPalavra.length; j++) {
+            palavraAjustada = palavraAjustada.replace(',', '')
+        }
 
-        inputAjustado = input.replace('À', 'A')
+        inputAjustado = input.toUpperCase()
+        inputAjustado = inputAjustado.replace('Á', 'A')
         inputAjustado = inputAjustado.replace('À', 'A')
         inputAjustado = inputAjustado.replace('Ã', 'A')
         inputAjustado = inputAjustado.replace('Â', 'A')
@@ -156,10 +146,11 @@ export default function App() {
         inputAjustado = inputAjustado.replace('Í', 'I')
         inputAjustado = inputAjustado.replace('Ó', 'O')
         inputAjustado = inputAjustado.replace('Ô', 'O')
+        inputAjustado = inputAjustado.replace('Õ', 'O')
         inputAjustado = inputAjustado.replace('Ú', 'U')
         inputAjustado = inputAjustado.replace('Ç', 'C')
 
-        if (inputAjustado.toUpperCase() === palavraAjustada) {
+        if (inputAjustado === palavraAjustada) {
             ganharJogo()
         }
         else {
@@ -203,8 +194,8 @@ export default function App() {
 
                 <ul className="box-alfabeto">
                     {alfabeto.map((letra, index) => (
-                        <li key={index} onClick={() => ajustarLetra(letra, index)}>
-                            <button>{letra}</button>
+                        <li key={index} onClick={() => escolherLetra(letra, index)} >
+                            <button disabled={disable} >{letra.toUpperCase()}</button>
                         </li>))}
                 </ul>
 
