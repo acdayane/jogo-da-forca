@@ -14,7 +14,13 @@ import forca6 from "./assets/forca6.png";
 import palavras from "./palavras.js";
 
 const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
-const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+const alfabeto = [{ letra: "a", status: true }, { letra: "b", status: true }, { letra: "c", status: true }, { letra: "d", status: true },
+{ letra: "e", status: true }, { letra: "f", status: true }, { letra: "g", status: true }, { letra: "h", status: true },
+{ letra: "i", status: true }, { letra: "j", status: true }, { letra: "k", status: true }, { letra: "l", status: true },
+{ letra: "m", status: true }, { letra: "n", status: true }, { letra: "o", status: true }, { letra: "p", status: true },
+{ letra: "q", status: true }, { letra: "r", status: true }, { letra: "s", status: true }, { letra: "t", status: true },
+{ letra: "u", status: true }, { letra: "v", status: true }, { letra: "w", status: true }, { letra: "x", status: true },
+{ letra: "y", status: true }, { letra: "z", status: true }]
 let arrPalavra = []
 let arrLetrasChutadas = []
 let palavra = ""
@@ -41,8 +47,8 @@ export default function App() {
         const sorteada = Math.floor(Math.random() * palavras.length)
         palavra = (palavras[sorteada]).toUpperCase()
         arrPalavra = palavra.split('')
-        
-        console.log(arrPalavra)
+
+        //console.log(arrPalavra)
 
         for (let i = 0; i < arrPalavra.length; i++) {
             arrLetrasChutadas.push(' _ ')
@@ -60,10 +66,16 @@ export default function App() {
     const [disable, setDisable] = useState(true);
 
     function habilitarBotao() {
+        for (let i = 0; i < alfabeto.length; i++) {
+            alfabeto[i].status = false
+        }
         setDisable(false)
     }
 
     function desabilitarBotao() {
+        for (let i = 0; i < alfabeto.length; i++) {
+            alfabeto[i].status = true
+        }
         setDisable(true)
     }
 
@@ -81,7 +93,7 @@ export default function App() {
             if (arrPalavra[j] === 'Í') {
                 arrPalavra[j] = 'I'
             }
-            if (arrPalavra[j] === 'Ó' || arrPalavra[j] === 'Ô'|| arrPalavra[j] === 'Õ') {
+            if (arrPalavra[j] === 'Ó' || arrPalavra[j] === 'Ô' || arrPalavra[j] === 'Õ') {
                 arrPalavra[j] = 'O'
             }
             if (arrPalavra[j] === 'Ú') {
@@ -96,7 +108,6 @@ export default function App() {
     //clicar em cada letra, renderizar acertos e erros, chamar funções de finalizar jogo
 
     function escolherLetra(letra, i) {
-
         if (arrPalavra.includes(letra.toUpperCase())) {
 
             for (let j = 0; j < arrPalavra.length; j++) {
@@ -123,6 +134,7 @@ export default function App() {
                 perderJogo()
             }
         }
+        alfabeto[i].status = true
     }
 
     //ignorar acentos e caracteres especiais do input e finalizar jogo
@@ -182,7 +194,7 @@ export default function App() {
         <>
             <div className="root">
 
-                <div className="conteudo">
+                <div className="conteudo" >
                     <img src={forca} alt={forca} />
                     <div className="inicio-jogo">
                         <button className="escolher-palavra" data-identifier="choose-word" onClick={iniciarJogo}>Escolher palavra</button>
@@ -193,9 +205,9 @@ export default function App() {
                 </div>
 
                 <ul className="box-alfabeto">
-                    {alfabeto.map((letra, index) => (
-                        <li key={index} onClick={() => escolherLetra(letra, index)} >
-                            <button disabled={disable} >{letra.toUpperCase()}</button>
+                    {alfabeto.map((letras, index) => (
+                        <li key={index} onClick={() => escolherLetra(letras.letra, index)} >
+                            <button disabled={letras.status} >{letras.letra.toUpperCase()}</button>
                         </li>))}
                 </ul>
 

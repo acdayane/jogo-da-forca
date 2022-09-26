@@ -10,7 +10,7 @@ const palavras = [
     "igreja", "ícone", "importante", "ímpar", "idoso", "irado", "identidade", "idioma", "idade", "idiota", 
     "jantar", "jumento", "jambú", "jibóia", "jararaca", "janela", "jerimum", "jaula", "jabuti", "jaleco", 
     "laranja", "lua", "leão", "limão", "larápio", "luz", "lindo", "lacraia", "lactose", "laço", "lacrar", 
-    "mamão", "manga", "morango", "mico", "matar", "mingau", "moqueca", "macacão", "mocassin", "maçaneta", 
+    "mamão", "manga", "morango", "mico", "matar", "mingau", "moqueca", "macacão", "mocassim", "maçaneta", 
     "nectarina", "nada", "navio", "namorado", "ninja", "natal", "narciso", "narina", "nádega", "nabo", 
     "ovo", "ostra", "obstetra", "oblíquo", "orangotango", "olhar", "óculos", "ortodoxo", "ouro", "ornamento", 
     "pato", "polvo", "povoar", "pólvora", "palhaço", "paróquia", "pano", "princesa", "pizza", "patroa", 
